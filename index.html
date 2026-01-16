@@ -54,6 +54,24 @@
                 margin: 0;
                 padding: 0;
             }
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                padding-left: 12px;
+            }
+            li {
+                position: relative;
+                margin: 0 0 4px 0;
+                padding: 0 0 0 12px;
+                font-size: 14px;
+            }
+            li:before {
+                content: '•';
+                position: absolute;
+                left: 0;
+                color: #fff;
+            }
             a {
                 border: none;
                 color: #fff;
@@ -61,96 +79,88 @@
                 text-decoration: none;
                 -webkit-tap-highlight-color: transparent;
             }
-            .timezone-container {
+            .container {
                 display: flex;
                 flex-direction: column;
                 padding: 0 24px;
+                max-width: 1240px;
             }
-            .timezone-logo {
-                font-size: 36px;
+            .logo {
+                font-size: 34px;
+                font-weight: 700;
+                padding-bottom: 16px;
+            }
+            .description {
+                max-width: 560px;
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+            .feature-list {
+                margin: 12px 0 36px 0;
+                text-align: left;
+            }
+            .cta-button {
+                display: inline-block;
+                padding: 16px 32px;
+                text-align: center;
+                background-color: #0088cc;
+                border-radius: 8px;
+                font-size: 18px;
                 font-weight: 600;
-                padding-bottom: 8px;
+                transition: background-color 0.3s ease;
             }
-            .timezone-value {
-                padding-top: 16px;
-                font-size: 10vw;
-                line-height: normal;
-                font-weight: 600;
+            .cta-button:hover {
+                background-color: #006699;
             }
-            .timezone-text {
-                text-decoration: underline;
-            }
-            .timezone-container-top {
-                display: flex;
-                flex-direction: column;
-                padding-bottom: 64px;
-            }
-            .timezone-container-bottom {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .timezone-description {
-                max-width: 460px;
-            }
-            @media (min-width: 768px) {
-                .timezone-text:hover {
-                    text-decoration: none;
+            @media (max-width: 768px) {
+                .logo {
+                    font-size: 28px;
+                }
+                .description {
+                    font-size: 14px;
+                }
+                .cta-button {
+                    font-size: 16px;
+                    padding: 14px 28px;
                 }
             }
         </style>
         <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="./apple-touch-icon.png"
+            href="./assets/apple-touch-icon.png"
         />
         <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="./favicon-32x32.png"
+            href="./assets/favicon-32x32.png"
         />
         <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="./favicon-16x16.png"
+            href="./assets/favicon-16x16.png"
         />
         <link rel="manifest" href="./site.webmanifest" />
     </head>
     <body>
         <main>
-            <a
-                class="timezone-container"
-                href="https://t.me/yoursummarizationbot?text=%2Fset_timezone%20[TIMEZONE]"
-            >
-                <div class="timezone-container-top">
-                    <h1 class="timezone-logo">«По сути» бот</h1>
-                    <p class="timezone-description">
-                        Твой умный ассистент, который превращает хаос
-                        телеграм-чатов в четкие и понятные ежедневные отчеты.
-                    </p>
-                </div>
-                <div class="timezone-container-bottom">
-                    <p class="timezone-text">Давай начнем?</p>
-                    <p class="timezone-value"></p>
-                </div>
-            </a>
+            <div class="container">
+                <h1 class="logo">
+                    <span>«По cути» бот</span>
+                </h1>
+                <p class="description">
+                    Твой помощник, который укрощает хаос телеграм-чатов:
+                </p>
+                <ul class="feature-list">
+                    <li>Спасает от потока информации</li>
+                    <li>Превращает все в регулярные и понятные отчеты</li>
+                </ul>
+                <a class="cta-button" href="https://t.me/po_suti_com_bot">
+                    Начать в Telegram
+                </a>
+            </div>
         </main>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const timezone =
-                    Intl.DateTimeFormat().resolvedOptions().timeZone;
-                const containerEl = document.querySelector(
-                    '.timezone-container',
-                );
-                const valueEl = document.querySelector('.timezone-value');
-                valueEl.textContent = timezone;
-                containerEl.href = containerEl.href.replace(
-                    '[TIMEZONE]',
-                    encodeURIComponent(timezone),
-                );
-            });
-        </script>
     </body>
 </html>
